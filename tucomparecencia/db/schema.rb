@@ -10,23 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_004154) do
+ActiveRecord::Schema.define(version: 2018_12_06_234941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cases", force: :cascade do |t|
-    t.string "rit"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_cases_on_user_id"
-  end
-
   create_table "communes", force: :cascade do |t|
-    t.string "name"
+    t.string "comuna"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "region"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -35,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_11_21_004154) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "rit"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,14 +50,10 @@ ActiveRecord::Schema.define(version: 2018_11_21_004154) do
     t.integer "role"
     t.text "address"
     t.bigint "commune_id"
-    t.bigint "case_id"
-    t.index ["case_id"], name: "index_users_on_case_id"
     t.index ["commune_id"], name: "index_users_on_commune_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cases", "users"
-  add_foreign_key "users", "cases"
   add_foreign_key "users", "communes"
 end
