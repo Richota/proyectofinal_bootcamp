@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_234941) do
+ActiveRecord::Schema.define(version: 2018_12_10_130810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 2018_12_06_234941) do
     t.string "comuna"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "region"
+    t.bigint "region_id"
+    t.index ["region_id"], name: "index_communes_on_region_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -29,6 +30,14 @@ ActiveRecord::Schema.define(version: 2018_12_06_234941) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "rit"
+  end
+
+  create_table "regions", force: :cascade do |t|
+    t.string "nombre"
+    t.string "ordinal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "short_name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,5 +64,6 @@ ActiveRecord::Schema.define(version: 2018_12_06_234941) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "communes", "regions"
   add_foreign_key "users", "communes"
 end
