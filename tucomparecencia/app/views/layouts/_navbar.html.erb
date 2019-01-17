@@ -1,27 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+<!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top ">
+  <%= link_to 'Home', root_path, class: "navbar-brand" %>
+  <div class="collapse navbar-collapse justify-content-between id="navbarResponsive"">
+
+    <% if user_signed_in? %>
+    <u>
+      <li>Bienvenido <%= current_user.name %>  </li>
+    </u>
+    <% end %>
+    <% if user_signed_in? %>
+    <u>
+      <li><%= link_to "Nuevo documento", documents_path %></li>
+    </u>
+    <% end %>
+  </div>
+
+  <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    Menu
+    <i class="fas fa-bars"></i>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+  <div class="collapse navbar-collapse text-uppercas" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+      <% if !user_signed_in? %>
+      <li class="nav-item mx-0 mx-lg-1">
+        <%= link_to 'Ingreso', new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+      <li class="nav-item mx-0 mx-lg-1">
+        <%= link_to 'Registro', new_user_registration_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+      <% else %>
+      <li class="nav-item mx-0 mx-lg-1">
+        <%= link_to 'Salir', destroy_user_session_path, method: 'DELETE', class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
+      <% end %>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>

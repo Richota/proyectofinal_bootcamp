@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Escrito:</strong>
   <%= @document.name %>
 </p>
 
@@ -17,3 +17,26 @@
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
+
+<br>
+SOLICITA NO PERSEVERAR CON LA DENUNCIA POR VIOLENCIA INTRAFAMILIAR<br>
+(COMPARECENCIA EN CAAF)
+
+S. J. DE FAMILIA DE SANTIAGO.
+
+<%= current_user.name  %>, en causa RIT <input>, domiciliada (o) en<br>
+<%= current_user.address %>, comuna de <%= current_user.commune.comuna %>, teléfono
+<%= current_user.phone %>, correo electrónico para notificar <%= current_user.email %>, a S.S.
+respetuosamente digo:
+Que vengo señalar a US., mi voluntad de no perseverar con la tramitación de la presente
+causa, señalando expresamente que NO me encuentro en situación de riesgo y que a la audiencia
+correspondiente no asistiré, así como tampoco presentaré medio de prueba alguna.
+Junto con lo anterior, solicito a US., que en caso de haberse decretado medidas cautelares
+en mi favor, éstas sean dejadas sin efecto.
+
+POR TANTO.,
+RUEGO A S.S., se sirva acceder a lo solicitado y no perseverar con la tramitación de la
+presente causa.
+
+_________________________
+Firma parte solicitante y RUT

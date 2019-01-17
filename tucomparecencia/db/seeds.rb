@@ -370,3 +370,92 @@ Commune.create(comuna: 'Isla de Maipo',        region_id: rm.id)
 Commune.create(comuna: 'Padre Hurtado',        region_id: rm.id)
 Commune.create(comuna: 'Peñaflor',             region_id: rm.id)
 Commune.create(comuna: 'Talagante', region_id: rm.id)
+
+# Artículo 71.- Medidas cautelares especiales.
+# a) Su entrega inmediata a los padres o a quienes
+# tengan legalmente su cuidado;
+#      b) Confiarlo al cuidado de una persona o familia en
+# casos de urgencia. El juez preferirá, para que asuman
+# provisoriamente el cuidado, a sus parientes
+# consanguíneos o a otras personas con las que tenga
+# relación de confianza;
+#      c) El ingreso a un programa de familias de
+# acogida o centro de diagnóstico o residencia, por el
+# tiempo que sea estrictamente indispensable. En este
+# caso, de adoptarse la medida sin la comparecencia del
+# niño, niña o adolescente ante el juez, deberá
+# asegurarse que ésta se verifique a primera hora de la
+# audiencia más próxima;
+#      d) Disponer la concurrencia de niños, niñas o
+# adolescentes, sus padres, o las personas que los tengan
+# bajo su cuidado, a programas o acciones de apoyo,
+# reparación u orientación, para enfrentar y superar las
+# situaciones de crisis en que pudieren encontrarse, e
+# impartir las instrucciones pertinentes;
+#      e) Suspender el derecho de una o más personas
+# determinadas a mantener relaciones directas o regulares
+# con el niño, niña o adolescente, ya sea que éstas hayan
+# sido establecidas por resolución judicial o no lo hayan
+# sido;
+#      f) Prohibir o limitar la presencia del ofensor en
+# el hogar común;
+#      g) Prohibir o limitar la concurrencia del
+# ofensor al lugar de estudio del niño, niña o
+# adolescente, así como a cualquier otro lugar donde
+# éste o ésta permanezca, visite o concurra
+# habitualmente. En caso de que concurran al mismo
+# establecimiento, el juez adoptará medidas específicas
+# tendientes a resguardar los derechos de aquéllos.
+#      h) La internación en un establecimiento
+# hospitalario, psiquiátrico o de tratamiento
+# especializado, según corresponda, en la medida que se
+# requiera de los servicios que éstos ofrecen y ello sea
+# indispensable frente a una amenaza a su vida o salud, e
+# i) La prohibición de salir del país para el niño,
+# niña o adolescente sujeto de la petición de protección.
+
+# Artículo 92.- Medidas cautelares en protección de la víctima.
+# 1. Prohibir al ofensor acercarse a la víctima y
+# prohibir o restringir la presencia de aquél en el hogar
+# común y en el domicilio, lugar de estudios o de trabajo
+# de ésta, así como en cualquier otro lugar en que la
+# víctima permanezca, concurra o visite habitualmente.
+# Si ambos trabajan o estudian en el mismo lugar,
+# se oficiará al empleador o director del establecimiento
+# para que adopte las medidas de resguardo necesarias.
+#
+#      2. Asegurar la entrega material de los efectos
+# personales de la víctima que optare por no regresar al
+# hogar común.
+#
+#      3. Fijar alimentos provisorios.
+#
+#      4. Determinar un régimen provisorio de cuidado
+# personal de los niños, niñas o adolescentes en
+# conformidad al artículo 225 del Código Civil, y
+# establecer la forma en que se mantendrá una relación
+# directa y regular entre los progenitores y sus hijos.
+#
+#      5. Decretar la prohibición de celebrar actos o
+# contratos.
+#
+#      6.- Prohibir el porte y tenencia de cualquier arma
+#  de fuego, municiones y cartuchos; disponer la
+#  retención de los mismos, y prohibir la adquisición
+# o almacenaje de los objetos singularizados en el
+#  artículo 2º de la ley Nº17.798, sobre Control de
+#  Armas. De ello se informará, según corresponda, a
+# la Dirección General de Movilización, a la Comandancia
+#  de Guarnición o al Director del Servicio respectivo
+# para los fines legales y reglamentarios pertinentes. Con
+# todo, el imputado podrá solicitar ser excluido de
+#  estas medidas en caso de demostrar que sus actividades
+#  industriales, comerciales o mineras requieren de alguno
+# de esos elementos.
+#
+#      7. Decretar la reserva de la identidad del tercero
+# denunciante.
+#
+#      8. Establecer medidas de protección para adultos
+# mayores o personas afectadas por alguna incapacidad o
+# discapacidad.

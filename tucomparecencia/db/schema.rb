@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_10_130810) do
+ActiveRecord::Schema.define(version: 2019_01_17_193742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 2018_12_10_130810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "rit"
+    t.text "motive"
+    t.string "child"
+    t.bigint "precautionary_id"
+    t.bigint "user_id"
+    t.index ["precautionary_id"], name: "index_documents_on_precautionary_id"
+    t.index ["user_id"], name: "index_documents_on_user_id"
+  end
+
+  create_table "precautionaries", force: :cascade do |t|
+    t.string "measure"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "regions", force: :cascade do |t|
@@ -54,16 +66,20 @@ ActiveRecord::Schema.define(version: 2018_12_10_130810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.string "lastname"
     t.string "phone"
     t.integer "role"
     t.text "address"
     t.bigint "commune_id"
+    t.bigint "region_id"
     t.index ["commune_id"], name: "index_users_on_commune_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["region_id"], name: "index_users_on_region_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "communes", "regions"
+  add_foreign_key "documents", "precautionaries"
+  add_foreign_key "documents", "users"
   add_foreign_key "users", "communes"
+  add_foreign_key "users", "regions"
 end
