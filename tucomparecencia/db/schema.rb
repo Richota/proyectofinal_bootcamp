@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_17_193742) do
+ActiveRecord::Schema.define(version: 2019_01_18_172126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,6 @@ ActiveRecord::Schema.define(version: 2019_01_17_193742) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "rit"
-    t.text "motive"
-    t.string "child"
-    t.bigint "precautionary_id"
-    t.bigint "user_id"
-    t.index ["precautionary_id"], name: "index_documents_on_precautionary_id"
-    t.index ["user_id"], name: "index_documents_on_user_id"
   end
 
   create_table "precautionaries", force: :cascade do |t|
@@ -78,8 +71,6 @@ ActiveRecord::Schema.define(version: 2019_01_17_193742) do
   end
 
   add_foreign_key "communes", "regions"
-  add_foreign_key "documents", "precautionaries"
-  add_foreign_key "documents", "users"
   add_foreign_key "users", "communes"
   add_foreign_key "users", "regions"
 end
