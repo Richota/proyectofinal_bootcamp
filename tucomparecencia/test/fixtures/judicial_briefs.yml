@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rit: MyString
+  precautionary: one
+  child: MyString
+  motive: MyText
+  user: one
+
+two:
+  rit: MyString
+  precautionary: two
+  child: MyString
+  motive: MyText
+  user: two

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_172126) do
+ActiveRecord::Schema.define(version: 2019_01_18_190220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(version: 2019_01_18_172126) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "judicial_briefs", force: :cascade do |t|
+    t.string "rit"
+    t.bigint "precautionary_id"
+    t.string "child"
+    t.text "motive"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_judicial_briefs_on_document_id"
+    t.index ["precautionary_id"], name: "index_judicial_briefs_on_precautionary_id"
+    t.index ["user_id"], name: "index_judicial_briefs_on_user_id"
   end
 
   create_table "precautionaries", force: :cascade do |t|
@@ -71,6 +85,9 @@ ActiveRecord::Schema.define(version: 2019_01_18_172126) do
   end
 
   add_foreign_key "communes", "regions"
+  add_foreign_key "judicial_briefs", "documents"
+  add_foreign_key "judicial_briefs", "precautionaries"
+  add_foreign_key "judicial_briefs", "users"
   add_foreign_key "users", "communes"
   add_foreign_key "users", "regions"
 end
