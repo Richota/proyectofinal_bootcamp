@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :commune
   belongs_to :region
+  has_many :user_documents
 end
