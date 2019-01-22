@@ -8,13 +8,17 @@ class UserDocumentsController < ApplicationController
 
     respond_to do |format|
       if @user_document.save
-        format.html { redirect_to 'landing_index_path', notice: 'User_Document was successfully created.' }
-        format.json { render :show, status: :created, location: @user_document }
+        format.html { redirect_to documents_path, notice: "El escrito #{@user_document.document.name}fue creado." }
+        # format.json { render :show, status: :created, location: @user_document }
       else
         format.html { render :new }
         format.json { render json: @user_document.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def show
+
   end
 
   private

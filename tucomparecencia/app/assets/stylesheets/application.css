@@ -10,7 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootswatch
+ *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap/dist/css/bootstrap-grid
+ *= require style
+ *= require superfish/dist/css/superfish
+ *= require superfish/dist/css/megafish
+ *= require superfish/dist/css/superfish-navbar
+ *= require superfish/dist/css/superfish-vertical
+ *= require animate
  *= require_tree .
  *= require_self
  */
