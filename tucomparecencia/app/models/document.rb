@@ -1,3 +1,3 @@
 class Document < ApplicationRecord
-  has_many :precautionaries
+  has_many :user_documents
 end

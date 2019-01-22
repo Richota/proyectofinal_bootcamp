@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_21_002726) do
+ActiveRecord::Schema.define(version: 2019_01_22_020720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 2019_01_21_002726) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "precautionary_id"
+    t.text "measure1"
+    t.text "measure2"
+    t.text "measure3"
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_user_documents_on_document_id"
     t.index ["precautionary_id"], name: "index_user_documents_on_precautionary_id"
     t.index ["user_id"], name: "index_user_documents_on_user_id"
   end
@@ -83,6 +88,7 @@ ActiveRecord::Schema.define(version: 2019_01_21_002726) do
   end
 
   add_foreign_key "communes", "regions"
+  add_foreign_key "user_documents", "documents"
   add_foreign_key "user_documents", "precautionaries"
   add_foreign_key "user_documents", "users"
   add_foreign_key "users", "communes"

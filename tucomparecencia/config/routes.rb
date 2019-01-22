@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'landing/index'
   resources :documents
+  resources :user_documents, only: [:create, :show, :new]
   get 'users/index'
   devise_for :users, controllers: {
         registrations: 'users/registrations'

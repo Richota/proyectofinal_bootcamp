@@ -17,7 +17,7 @@
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %><br>
-<%= form_with(model: @document, local: true) do |form| %>
+<%= form_with(model: UserDocument.new, local: true) do |form| %>
   <% if @document.name == 'Desistimiento'%>
     <br>
     SOLICITA NO PERSEVERAR CON LA DENUNCIA POR VIOLENCIA INTRAFAMILIAR<br>
@@ -62,7 +62,7 @@
     <br>
     _________________________<br>
     Firma parte solicitante y RUT<br>
-  <% else %>
+  <% elsif @document.name == 'Solicitud Medidas Cautelares' %>
       SOLICITA MEDIDAS CAUTELARES (COMPARECENCIA EN CAAF).<br>
     S. J. CENTRO DE MEDIDAS CAUTELARES<br>
     <br>
@@ -71,13 +71,12 @@
     <span><%= current_user.phone %></span>, correo electrónico para notificar <span><%= current_user.email %></span>, a S.S.<br>
     respetuosamente digo:<br>
     Que vengo en solicitar se decreten en mi favor las siguientes medidas cautelares:<br>
-    1.- _______________________________________________________________ .<br>
-    2.- _______________________________________________________________ .<br>
-    3.- _______________________________________________________________ .<br>
+    1.- <%= form.select :measure1, Precautionary.pluck(:measure), :include_blank => true %> .<br>
+    2.- <%= form.select :measure2, Precautionary.pluck(:measure), :include_blank => true %> .<br>
+    3.- <%= form.select :measure3, Precautionary.pluck(:measure), :include_blank => true %> .<br>
     Dicha solicitud se funda en los siguientes motivos:<br>
-    ________________________________________________________________________________
-    __________________________________________________________________________
-    _____________________________________________________________________________ .<br>
+    <%= form.text_area :motive%>
+    <br>
     POR TANTO., en mérito de lo expuesto,<br>
     RUEGO A S.S., se sirva acceder a lo solicitado, decretando las medidas cautelares<br>
     solicitadas.<br>
@@ -85,4 +84,10 @@
     _________________________<br>
     Firma parte solicitante y RUT
   <% end %>
+  <br>
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+  <%= form.hidden_field :document_id, :value => @document.id %>
+  <div class="actions"><br>
+    <%= form.submit %>
+  </div>
 <% end %>
