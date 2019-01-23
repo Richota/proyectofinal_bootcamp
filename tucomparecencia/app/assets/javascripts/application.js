@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery/dist/jquery
 //= require main
+//= require carousel
 //= require bootstrap/dist/js/bootstrap
 //= require bootstrap/dist/js/bootstrap.bundle
 //= require jquery-migrate/dist/jquery-migrate
