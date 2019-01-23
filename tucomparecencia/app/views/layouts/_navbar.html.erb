@@ -21,7 +21,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#team">Team</a></li>
-        <li class="menu-has-children"><a href="">Sesión</a>
+        <li class="menu-has-children"><a href="">Acceso</a>
           <ul>
             <% if !user_signed_in? %>
             <li class="nav-item mx-0 mx-lg-1">
@@ -35,7 +35,6 @@
               <%= link_to 'Salir', destroy_user_session_path, method: 'DELETE', class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
             </li>
             <% end %>
-            <li><a href="#">Drop Down 5</a></li>
           </ul>
         </li>
         <li><a href="#contact">Contact Us</a></li>

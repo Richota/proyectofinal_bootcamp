@@ -1,31 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Documents</h1>
+<h1>Escritos</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <div class="row">
+        <div class="col-md-4">
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col" colspan="3"></th>
-    </tr>
-  </thead>
+          <th scope="col">Nombre</th>
+        </div>
+        <div class="col-md-6">
 
-  <tbody>
-    <% @documents.each do |document| %>
+          <th scope="col">Descripción</th>
+        </div>
+        <div class="col-md-2">
+
+          <th scope="col">Precio</th>
+          <th scope="col" colspan="3"></th>
+        </div>
+      </div>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @documents.each do |document| %>
       <tr class="table-active">
-        <td><%= document.name %></td>
+        <th scope="row"><%= document.name %></th>
         <td><%= document.description %></td>
         <td><%= document.price %></td>
         <td><%= link_to 'Show', document %></td>
         <td><%= link_to 'Edit', edit_document_path(document) %></td>
         <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
+
 
 <br>
-
-<%= link_to 'New Document', new_document_path %>
+<i class="fas fa-plus-circle"></i><%= link_to '  Nuevo Escrito ', new_document_path %>
