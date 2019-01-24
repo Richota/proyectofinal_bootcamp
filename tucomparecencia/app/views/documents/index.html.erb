@@ -1,13 +1,12 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Documents</h1>
 
 <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Precio</th>
       <th scope="col" colspan="3"></th>
     </tr>
   </thead>
@@ -15,7 +14,7 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr class="table-active">
-        <td><%= document.name %></td>
+        <th scope="row"><%= document.name %></th>
         <td><%= document.description %></td>
         <td><%= document.price %></td>
         <td><%= link_to 'Show', document %></td>
