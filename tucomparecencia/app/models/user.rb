@@ -7,5 +7,5 @@ class User < ApplicationRecord
   belongs_to :region
   has_many :user_documents
 
-  enum role: [:admin, :user, :superuser]
+  enum role: [:admin, :regularuser, :superuser]
 end

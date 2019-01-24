@@ -7,7 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.admin?
       can :manage, :all
-    else
+    elsif User.exists?(user.id)
       can :read, Document
     end
     # can :destroy, Document, user_id: user.id
