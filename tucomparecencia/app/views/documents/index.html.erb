@@ -1,41 +1,32 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Escritos</h1>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <div class="row">
-        <div class="col-md-4">
 
-          <th scope="col">Nombre</th>
-        </div>
-        <div class="col-md-6">
-
-          <th scope="col">Descripción</th>
-        </div>
-        <div class="col-md-2">
-
-          <th scope="col">Precio</th>
-          <th scope="col" colspan="3"></th>
-        </div>
-      </div>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @documents.each do |document| %>
-      <tr class="table-active">
-        <th scope="row"><%= document.name %></th>
-        <td><%= document.description %></td>
-        <td><%= document.price %></td>
-        <td><%= link_to 'Show', document %></td>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Precio</th>
+      <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @documents.each do |document| %>
+    <tr class="table-active">
+      <th scope="row"><%= document.name %></th>
+      <td><%= document.description %></td>
+      <td><%= document.price %></td>
+      <td><%= link_to 'Show', document %></td>
+      <% if can?(:manage, :all) %>
         <td><%= link_to 'Edit', edit_document_path(document) %></td>
         <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
       <% end %>
-    </tbody>
+    </tr>
+    <% end %>
+  </tbody>
   </table>
 
-
 <br>
-<i class="fas fa-plus-circle"></i><%= link_to '  Nuevo Escrito ', new_document_path %>
+<% if can?(:manage, :all) %>
+  <i class="fas fa-plus-circle"></i> <%= link_to 'New Document', new_document_path %>
+<% end %>

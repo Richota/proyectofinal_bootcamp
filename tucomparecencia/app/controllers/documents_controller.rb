@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  # before_action :set_document, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /documents
   # GET /documents.json
@@ -70,9 +71,9 @@ end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_document
-      @document = Document.find(params[:id])
-    end
+    # def set_document
+    #   @document = Document.find(params[:id])
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
