@@ -6,6 +6,8 @@ class User < ApplicationRecord
   belongs_to :commune
   belongs_to :region
   has_many :user_documents
+  has_many :orders
+  has_many :documents, through: :orders
 
   enum role: [:admin, :regularuser, :superuser]
 end
