@@ -17,6 +17,7 @@
       <td><%= document.description %></td>
       <td><%= document.price %></td>
       <td>
+        <%= link_to "Agregar al carro", document_orders_path(document), class: 'btn btn-success', method: :post  %>
         <%= link_to 'Comprar Escrito', pre_pay_billings_path, class: "btn btn-success float-right" %>
         <%= link_to 'Show', document %>
       </td>

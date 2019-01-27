@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def create
     d = Document.find(params[:document_id])
-    o = Order.find_or_create_by(user_id: current_user.id, document_id: d.id, payed: false, price: d.price, quantity: 1)
+    o = Order.new(user_id: current_user.id, document_id: d.id, payed: false, price: d.price)
 
     if o.save
       redirect_to documents_path, notice: "El producto ha sido agregado al carro."
