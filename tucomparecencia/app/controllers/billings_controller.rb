@@ -1,4 +1,5 @@
 class BillingsController < ApplicationController
+  before_action :authenticate_user!
 
   def pre_pay
     order = current_user.orders.last
@@ -19,7 +20,7 @@ class BillingsController < ApplicationController
       :payer =>  {
         :payment_method =>  "paypal" },
       :redirect_urls => {
-        :return_url => "http://localhost:3000/payment/execute",
+        :return_url => "http://localhost:3000/billings/execute",
         :cancel_url => "http://localhost:3000/" },
       :transactions =>  [{
         :item_list => {
@@ -39,6 +40,25 @@ class BillingsController < ApplicationController
       redirect_to redirect_url
     else
       ':('
+    end
+  end
+
+  def execute
+    paypal_payment = PayPal::SDK::REST::Payment.find(params[:paymentId])
+    if paypal_payment.execute(payer_id: params[:PayerID])
+      amount = paypal_payment.transactions.first.amount.total
+      billing = Billing.create(
+                user: current_user,
+                code: paypal_payment.id,
+                payment_method: 'paypal',
+                amount: amount,
+                currency: 'USD'
+                )
+      orders = current_user.orders.where(payed: false)
+      orders.update_all(payed: true, billing_id: billing.id)
+      redirect_to new_user_document_path, notice: "La compra se realizó con éxito!"
+    else
+      render plain: "No se puedo generar el cobro en PayPal."
     end
   end
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :documents do
     resources :orders, only: :create
   end
+  resources :user_documents, only: [:create, :show, :new]
 
   resources :orders, only: :index do
     collection do
@@ -10,11 +11,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :user_documents, only: [:create, :show, :new]
+
   get 'users/index'
   resources :billings, only: [] do
     collection do
       get 'pre_pay'
+      get 'execute'
     end
   end
   devise_for :users, controllers: {

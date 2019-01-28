@@ -1,6 +1,8 @@
 class UserDocumentsController < ApplicationController
   def new
     @user_document = UserDocument.new
+    @precautionary = Precautionary.pluck(:measure)
+    @document = Order.last.document
   end
 
   def create

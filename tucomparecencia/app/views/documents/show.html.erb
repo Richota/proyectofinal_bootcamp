@@ -11,82 +11,9 @@
 
 <p>
   <strong>Precio:</strong>
-  <%= @document.price %>
+  $<%= @document.price %>
 </p>
 
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %><br>
-<%= form_with(model: UserDocument.new, local: true) do |form| %>
-  <% if @document.name == 'Desistimiento'%>
-    <br>
-    SOLICITA NO PERSEVERAR CON LA DENUNCIA POR VIOLENCIA INTRAFAMILIAR<br>
-    (COMPARECENCIA EN CAAF)<br>
-    <br>
-    S. J. DE FAMILIA DE SANTIAGO.<br>
-    <br>
-    <span><%= current_user.name  %></span>, en causa RIT <input>, domiciliada (o) en<br>
-    <span><%= current_user.address %></span>, comuna de <span><%= current_user.commune.comuna %></span>, teléfono<br>
-    <span><%= current_user.phone %></span>, correo electrónico para notificar <span><%= current_user.email %></span>, a S.S.<br>
-    respetuosamente digo:<br>
-    Que vengo señalar a US., mi voluntad de no perseverar con la tramitación de la presente<br>
-    causa, señalando expresamente que NO me encuentro en situación de riesgo y que a la audiencia<br>
-    correspondiente no asistiré, así como tampoco presentaré medio de prueba alguna.<br>
-    Junto con lo anterior, solicito a US., que en caso de haberse decretado medidas cautelares<br>
-    en mi favor, éstas sean dejadas sin efecto.<br>
-    <br>
-    POR TANTO.,<br>
-    RUEGO A S.S., se sirva acceder a lo solicitado y no perseverar con la tramitación de la<br>
-    presente causa.<br>
-    <br>
-    _________________________<br>
-    Firma parte solicitante y RUT
+<%= link_to 'Edit', edit_document_path(@document) %>
 
-  <% elsif @document.name == 'Solicitud Cuidado Personal Provisiorio'%>
-    <br>
-    SOLICITA CUIDADO PERSONAL PROVISORIO (COMPARECENCIA EN CAAF).<br>
-    S. J. CENTRO DE MEDIDAS CAUTELARES<br>
-    <br>
-    <span><%= current_user.name %></span>, en causa RIT <% form.text_field :rit %>, domiciliada (o)<br>
-    en <span><%= current_user.address %></span>, comuna de <span><%= current_user.commune.comuna %></span>, teléfono<br>
-    <span><%= current_user.phone %></span>, correo electrónico para notificar <span><%= current_user.email %></span>, a S.S.<br>
-    respetuosamente digo:<br>
-    Que vengo en solicitar a US., se sirva otorgarme el cuidado personal provisorio respecto<br>
-    del niño, niña o adolecente <%= form.text_field :child %>, por los siguientes<br>
-    motivos:<br>
-    <%= form.text_area :motive%>
-    <br>
-    POR TANTO., en mérito de lo expuesto,<br>
-    RUEGO A S.S., se sirva acceder a lo solicitado, otorgándome el cuidado personal<br>
-    provisorio.<br>
-    <br>
-    _________________________<br>
-    Firma parte solicitante y RUT<br>
-  <% elsif @document.name == 'Solicitud Medidas Cautelares' %>
-      SOLICITA MEDIDAS CAUTELARES (COMPARECENCIA EN CAAF).<br>
-    S. J. CENTRO DE MEDIDAS CAUTELARES<br>
-    <br>
-    <span><%= current_user.name %></span>, en causa RIT <span> <%= form.text_field :rit %></span>, domiciliada (o)<br>
-    en <span><%= current_user.address %></span>, comuna de <span><%= current_user.commune.comuna %></span>, teléfono<br>
-    <span><%= current_user.phone %></span>, correo electrónico para notificar <span><%= current_user.email %></span>, a S.S.<br>
-    respetuosamente digo:<br>
-    Que vengo en solicitar se decreten en mi favor las siguientes medidas cautelares:<br>
-    1.- <%= form.select :measure1, Precautionary.pluck(:measure), :include_blank => true %> .<br>
-    2.- <%= form.select :measure2, Precautionary.pluck(:measure), :include_blank => true %> .<br>
-    3.- <%= form.select :measure3, Precautionary.pluck(:measure), :include_blank => true %> .<br>
-    Dicha solicitud se funda en los siguientes motivos:<br>
-    <%= form.text_area :motive%>
-    <br>
-    POR TANTO., en mérito de lo expuesto,<br>
-    RUEGO A S.S., se sirva acceder a lo solicitado, decretando las medidas cautelares<br>
-    solicitadas.<br>
-    <br>
-    _________________________<br>
-    Firma parte solicitante y RUT
-  <% end %>
-  <br>
-  <%= form.hidden_field :user_id, :value => current_user.id %>
-  <%= form.hidden_field :document_id, :value => @document.id %>
-  <div class="actions"><br>
-    <%= form.submit 'Crear Escrito'%>
-  </div>
-<% end %>
+<%= link_to 'Back', documents_path %><br>
