@@ -1,0 +1,16 @@
+<h1>Este es tu pdf</h1>
+  <%= @user_document.document.name%>
+<% if @user_document.document.name == 'Desistimiento'%>
+  <%= @user_document.user.name%>
+  <%= @user_document.rit%>
+
+  <br>
+<% elsif @user_document.document.name == 'Solicitud Cuidado Personal Provisiorio'%>
+  <%= @user_document.document.name%>
+
+
+  <br>
+<% elsif @user_document.document.name == 'Solicitud Medidas Cautelares' %>
+  <%= @user_document.document.name%>
+  <%= @user_document.rit%>
+<% end %>

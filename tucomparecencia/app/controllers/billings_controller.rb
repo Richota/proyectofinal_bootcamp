@@ -56,7 +56,7 @@ class BillingsController < ApplicationController
                 )
       orders = current_user.orders.where(payed: false)
       orders.update_all(payed: true, billing_id: billing.id)
-      redirect_to new_user_document_path, notice: "La compra se realizó con éxito!"
+      redirect_to user_documents_path, notice: "La compra se realizó con éxito!"
     else
       render plain: "No se puedo generar el cobro en PayPal."
     end

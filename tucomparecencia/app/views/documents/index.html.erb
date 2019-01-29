@@ -17,10 +17,9 @@
         <td><%= document.description %></td>
         <td><%= document.price %></td>
         <td>
-          <%= link_to "Agregar al carro", document_orders_path(document), class: 'btn btn-success', method: :post  %>
+          <%= link_to 'Generar Escrito', document_orders_path(document), class: 'btn btn-success', method: :post %>
         </td>
         <% if can?(:manage, :all) %>
-        <td><%= link_to 'Show', document %></td>
         <td><%= link_to 'Edit', edit_document_path(document) %></td>
         <td><%= link_to 'Destroy', document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>

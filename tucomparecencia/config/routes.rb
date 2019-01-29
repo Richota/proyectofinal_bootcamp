@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :documents do
     resources :orders, only: :create
   end
-  resources :user_documents, only: [:create, :show, :new]
+  resources :user_documents, only: [:index, :create, :new]
 
   resources :orders, only: :index do
     collection do
