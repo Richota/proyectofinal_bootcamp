@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Confimación</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Documento</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr class="table-info">
+          <td><%= order.document.name %></td>
+          <td><%= order.document.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+</div>
+<br>
+<div class="container">
+  <br>
+  <fieldset class="form-group">
+    <legend>Seleccione un método de pago</legend>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            <img src="<%= asset_path 'paypal_logo.jpg' %>" alt="">
+          </label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+    <br>
+</div>
+<br>
+<%= link_to 'Volver a Documentos', documents_path %>
+<%= link_to 'Comprar Escrito', pre_pay_billings_path, class: "btn btn-info desabled float-right" %>

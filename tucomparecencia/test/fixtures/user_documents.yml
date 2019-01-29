@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  child: MyString
+  rit: MyString
+  motive: MyText
+  user: one
+
+two:
+  child: MyString
+  rit: MyString
+  motive: MyText
+  user: two

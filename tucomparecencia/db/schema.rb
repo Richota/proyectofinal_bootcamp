@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_18_190220) do
+ActiveRecord::Schema.define(version: 2019_01_25_042730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "billings", force: :cascade do |t|
+    t.string "code"
+    t.string "payment_method"
+    t.decimal "amount", precision: 10, scale: 2
+    t.string "currency"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_billings_on_user_id"
+  end
 
   create_table "communes", force: :cascade do |t|
     t.string "comuna"
@@ -31,12 +42,49 @@ ActiveRecord::Schema.define(version: 2019_01_18_190220) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.boolean "payed", default: false
+    t.integer "quantity", default: 0
+    t.float "price"
+    t.bigint "user_id"
+    t.bigint "document_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "billing_id"
+    t.index ["billing_id"], name: "index_orders_on_billing_id"
+    t.index ["document_id"], name: "index_orders_on_document_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "precautionaries", force: :cascade do |t|
+    t.text "measure"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "regions", force: :cascade do |t|
     t.string "nombre"
     t.string "ordinal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "short_name"
+  end
+
+  create_table "user_documents", force: :cascade do |t|
+    t.string "child"
+    t.string "rit"
+    t.text "motive"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "precautionary_id"
+    t.text "measure1"
+    t.text "measure2"
+    t.text "measure3"
+    t.bigint "document_id"
+    t.index ["document_id"], name: "index_user_documents_on_document_id"
+    t.index ["precautionary_id"], name: "index_user_documents_on_precautionary_id"
+    t.index ["user_id"], name: "index_user_documents_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,7 +102,7 @@ ActiveRecord::Schema.define(version: 2019_01_18_190220) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "phone"
-    t.integer "role"
+    t.integer "role", default: 1
     t.text "address"
     t.bigint "commune_id"
     t.bigint "region_id"
@@ -64,7 +112,14 @@ ActiveRecord::Schema.define(version: 2019_01_18_190220) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "billings", "users"
   add_foreign_key "communes", "regions"
+  add_foreign_key "orders", "billings"
+  add_foreign_key "orders", "documents"
+  add_foreign_key "orders", "users"
+  add_foreign_key "user_documents", "documents"
+  add_foreign_key "user_documents", "precautionaries"
+  add_foreign_key "user_documents", "users"
   add_foreign_key "users", "communes"
   add_foreign_key "users", "regions"
 end

@@ -1,40 +1,45 @@
 <!-- Navigation -->
 
-<nav class="navbar navbar-expand-lg bg-secondary fixed-top ">
-  <%= link_to 'Home', root_path, class: "navbar-brand" %>
-  <div class="collapse navbar-collapse justify-content-between id="navbarResponsive"">
+<header id="header">
+  <div class="container">
 
-    <% if user_signed_in? %>
-    <u>
-      <li>Bienvenido <%= current_user.name %>  </li>
-    </u>
-    <% end %>
-    <% if user_signed_in? %>
-    <u>
-      <li><%= link_to "Documentos", documents_path %></li>
-    </u>
-    <% end %>
+    <div id="logo" class="pull-left">
+      <!-- <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a> -->
+      <!-- Uncomment below if you prefer to use a text logo -->
+      <h1><a href="#hero">Regna</a></h1>
+    </div>
+
+    <nav id="nav-menu-container">
+      <ul class="nav-menu">
+        <li class="menu-active"><%= link_to 'Home', root_path, class: "navbar-brand" %></li>
+        <% if user_signed_in? %>
+          <li>Bienvenido <%= current_user.name %>  </li>
+        <% end %>
+        <% if user_signed_in? %>
+          <li><%= link_to "Documentos", documents_path %></li>
+        <% end %>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#team">Team</a></li>
+        <li class="menu-has-children"><a href="">Acceso</a>
+          <ul>
+            <% if !user_signed_in? %>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to 'Ingreso', new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to 'Registro', new_user_registration_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
+            </li>
+            <% else %>
+            <li class="nav-item mx-0 mx-lg-1">
+              <%= link_to 'Salir', destroy_user_session_path, method: 'DELETE', class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav><!-- #nav-menu-container -->
   </div>
-
-  <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-    Menu
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <div class="collapse navbar-collapse text-uppercas" id="navbarResponsive">
-    <ul class="navbar-nav ml-auto">
-      <% if !user_signed_in? %>
-      <li class="nav-item mx-0 mx-lg-1">
-        <%= link_to 'Ingreso', new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
-      </li>
-      <li class="nav-item mx-0 mx-lg-1">
-        <%= link_to 'Registro', new_user_registration_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
-      </li>
-      <% else %>
-      <li class="nav-item mx-0 mx-lg-1">
-        <%= link_to 'Salir', destroy_user_session_path, method: 'DELETE', class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
-      </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+</header><!-- #header -->
+<!-- #end navigation -->

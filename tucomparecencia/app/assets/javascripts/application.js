@@ -12,6 +12,20 @@
 //
 //= require rails-ujs
 //= require jquery/dist/jquery
+//= require main
+//= require carousel
+//= require bootstrap/dist/js/bootstrap
+//= require bootstrap/dist/js/bootstrap.bundle
+//= require jquery-migrate
+//= require counterup/jquery.counterup
+//= require easing/browser-easing
+//= require superfish/dist/js/superfish
+//= require superfish/dist/js/hoverIntent
+//= require superfish/dist/js/supersubs
+//= require waypoints/src/waypoint
+//= require waypoints/lib/jquery.waypoints
+//= require wow
+//= require contactform
 //= require activestorage
 //= require turbolinks
 //= require_tree .
