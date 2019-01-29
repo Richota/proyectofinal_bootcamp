@@ -8,4 +8,12 @@ class Order < ApplicationRecord
   def self.get_total
     pluck("price * quantity").sum()
   end
+
+  def self.created_by_day
+    group_by_day(:created_at).count
+  end
+
+  def self.group_document
+    group(:document_id).count
+  end
 end

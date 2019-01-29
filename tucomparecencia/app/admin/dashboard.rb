@@ -26,15 +26,24 @@ ActiveAdmin.register_page "Dashboard" do
         panel 'Compras' do
           ul do
             li "Compras realizadas: #{Order.count}"
-            # li "Recaudación: #{Order.billing.count}"
+            li "Recaudación: USD #{Order.get_total}"
           end
         end
       end
 
     end #columns
 
-    panel "Gráfico" do
-      render 'shared/chart'
+    columns do
+      column do
+        panel "Ventas generadas" do
+          render 'shared/chart1'
+        end
+      end
+      column do
+        panel "Documentos" do
+          render 'shared/chart2'
+        end
+      end
     end
   end # content
 end
