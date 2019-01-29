@@ -13,6 +13,7 @@
  *= require style
  *= require animate
  *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap/scss/bootstrap.scss
  *= require bootstrap/dist/css/bootstrap-grid
  *= require bootstrap/dist/css/bootstrap-reboot
  *= require superfish/dist/css/superfish

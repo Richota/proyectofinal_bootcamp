@@ -459,3 +459,4 @@ impartir las instrucciones pertinentes')
 #      8. Establecer medidas de protección para adultos
 # mayores o personas afectadas por alguna incapacidad o
 # discapacidad.
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
