@@ -13,13 +13,6 @@ class DocumentsController < ApplicationController
   def show
     @user_document = UserDocument.new
     @precautionary = Precautionary.get_measure
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render template: 'documents/show', pdf: 'Document Detail Report-' + Time.now.strftime('%v %H:%M:%S').to_s, javascript_delay: 10000,
-        layout: 'pdf_layout.html.haml', disposition: 'attachment'
-      end
-    end
   end
 
   # GET /documents/new

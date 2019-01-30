@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     end
   end
 
-
   get 'users/index'
   resources :billings, only: [] do
     collection do

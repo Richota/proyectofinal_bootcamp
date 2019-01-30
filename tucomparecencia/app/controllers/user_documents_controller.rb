@@ -20,6 +20,14 @@ class UserDocumentsController < ApplicationController
 
   def index
     @user_document = UserDocument.last
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name",   # Excluding ".pdf" extension.
+        template: "user_documents/index.html.erb",
+        layout: 'pdf.html'
+      end
+    end
   end
 
   private
