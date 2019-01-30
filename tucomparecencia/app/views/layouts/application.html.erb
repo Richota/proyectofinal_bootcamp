@@ -9,9 +9,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <%= render "layouts/navbar"  %>
   <body>
+    <%= render 'layouts/navbar' %>
     <% if notice.present? %>
       <div class="alert alert-dismissible alert-success" role="alert">
         <p class="notice"><%= notice %></p>

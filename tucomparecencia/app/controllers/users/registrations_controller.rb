@@ -6,7 +6,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
-    @regions = Region.all
+    @regions = Region.pluck(:short_name, :id)
+    @communes = Commune.pluck(:comuna, :id)
     build_resource({})
     respond_with self.resource
 
@@ -18,9 +19,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @regions = Region.pluck(:short_name, :id)
+    @communes = Commune.pluck(:comuna, :id)
+    build_resource({})
+    respond_with self.resource
+  end
 
   # PUT /resource
   # def update

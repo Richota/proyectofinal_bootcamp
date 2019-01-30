@@ -4,23 +4,23 @@
   <div class="container">
 
     <div id="logo" class="pull-left">
-      <!-- <a href="#hero"><img src="img/logo.png" alt="" title="" /></img></a> -->
+      <a href="#hero"><img src="<%= asset_path 'logo.png' %>" alt="" title=""></img></a>
       <!-- Uncomment below if you prefer to use a text logo -->
-      <h1><a href="#hero">Regna</a></h1>
+      <!-- <h2>Tu Comparecencia</h2> -->
     </div>
 
     <nav id="nav-menu-container">
       <ul class="nav-menu">
         <li class="menu-active"><%= link_to 'Home', root_path, class: "navbar-brand" %></li>
         <% if user_signed_in? %>
-          <li>Bienvenido <%= current_user.name %>  </li>
+          <li><h4>Bienvenido <%= current_user.name %> </h4> </li>
         <% end %>
         <% if user_signed_in? %>
           <li><%= link_to "Documentos", documents_path %></li>
         <% end %>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Servicio</a></li>
         <li><a href="#team">Team</a></li>
+        <li><a href="#contact">Contáctanos</a></li>
         <li class="menu-has-children"><a href="">Acceso</a>
           <ul>
             <% if !user_signed_in? %>
@@ -37,7 +37,6 @@
             <% end %>
           </ul>
         </li>
-        <li><a href="#contact">Contact Us</a></li>
       </ul>
     </nav><!-- #nav-menu-container -->
   </div>

@@ -13,7 +13,6 @@
 //= require rails-ujs
 //= require jquery/dist/jquery
 //= require main
-//= require popper.js/dist/umd/popper
 //= require carousel
 //= require bootstrap/dist/js/bootstrap
 //= require bootstrap/dist/js/bootstrap.bundle
@@ -26,6 +25,7 @@
 //= require waypoints/src/waypoint
 //= require waypoints/lib/jquery.waypoints
 //= require wow
+//= require popper.js/dist/umd/popper
 //= require contactform
 //= require activestorage
 //= require turbolinks

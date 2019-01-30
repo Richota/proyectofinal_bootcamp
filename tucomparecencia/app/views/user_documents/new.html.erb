@@ -1,2 +1,21 @@
-<h1>Datos requeridos</h1>
-<p>Completar este pequeño formulario para la generación del escrito</p>
+<p>
+  <br>
+  SOLICITA CUIDADO PERSONAL PROVISORIO (COMPARECENCIA EN CAAF). <br>
+  S. J. CENTRO DE MEDIDAS CAUTELARES <br>
+  <br>
+  <%= current_user.name %>, en causa RIT <%= @user_document.rit %>, domiciliada (o)<br>
+  en <%= current_user.address %>, comuna de <%= current_user.commune.comuna %>, teléfono <br>
+  <%= current_user.phone  %>, correo electrónico para notificar <%= current_user.email %>, a S.S.<br>
+  respetuosamente digo: <br>
+  Que vengo en solicitar a US., se sirva otorgarme el cuidado personal provisorio respecto <br>
+  del niño, niña o adolecente <%= @user_document.child %>, por los siguientes <br>
+  motivos: <br>
+  <%= @user_document.motive %>. <br>
+  POR TANTO., en mérito de lo expuesto,<br>
+  RUEGO A S.S., se sirva acceder a lo solicitado, otorgándome el cuidado personal <br>
+  provisorio.<br>
+<br>
+  _________________________ <br>
+  Firma parte solicitante y RUT <br>
+</p>
+<br>

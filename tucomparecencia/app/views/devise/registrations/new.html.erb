@@ -6,7 +6,7 @@
     <div class="card border-primary mb-3" style="max-width: 20rem;">
       <div class="card-header"><h2>Registrarse</h2></div>
       <div class="card-body">
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form'}) do |f| %>
           <%= devise_error_messages! %>
 
           <div class="field"><br />
@@ -57,14 +57,14 @@
           <div class="field"><br />
             <h4 class="card-title">
               <%= f.label :region_id, "Región" %>
-              <%= f.select :region_id, Region.pluck(:short_name, :id), :include_blank => true %>
+              <%= f.select :region_id, @regions, :include_blank => true %>
             </h4>
           </div>
 
           <div class="field"><br />
             <h4 class="card-title">
               <%= f.label :commune_id, "Comuna"%>
-              <%= f.select :commune_id, Commune.pluck(:comuna, :id), :include_blank => true %>
+              <%= f.select :commune_id, @communes, :include_blank => true %>
             </h4>
           </div>
 

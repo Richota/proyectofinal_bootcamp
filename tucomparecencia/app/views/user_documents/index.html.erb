@@ -1,16 +1,80 @@
-<h1>Este es tu pdf</h1>
-  <%= @user_document.document.name%>
-<% if @user_document.document.name == 'Desistimiento'%>
-  <%= @user_document.user.name%>
-  <%= @user_document.rit%>
+<h1> <%= @user_document.document.name%> </h1>
+<br>
+<div class="row justify-content-md-center">
+  <div class="col-md-6 col-md-offset-4">
+    <% if @user_document.document.name == 'Desistimiento'%>
+        <h4>SOLICITA NO PERSEVERAR CON LA DENUNCIA POR VIOLENCIA INTRAFAMILIAR</h4>
+          <h4>(COMPARECENCIA EN CAAF)</h4>
 
-  <br>
-<% elsif @user_document.document.name == 'Solicitud Cuidado Personal Provisiorio'%>
-  <%= @user_document.document.name%>
+          <h5>S. J. DE FAMILIA DE SANTIAGO.</h5> <br>
 
+          <%= current_user.name %>, en causa RIT <% @user_document.rit %>, domiciliada (o) en <br>
+          <%= current_user.address %>, comuna de <%= current_user.commune.comuna %>, teléfono <br>
+          <%= current_user.phone %>, correo electrónico para notificar <%= current_user.email %>, a S.S. <br>
+          respetuosamente digo: <br>
+          Que vengo señalar a US., mi voluntad de no perseverar con la tramitación de la presente <br>
+          causa, señalando expresamente que NO me encuentro en situación de riesgo y que a la audiencia <br>
+          correspondiente no asistiré, así como tampoco presentaré medio de prueba alguna. <br>
+          Junto con lo anterior, solicito a US., que en caso de haberse decretado medidas cautelares <br>
+          en mi favor, éstas sean dejadas sin efecto. <br>
+          <br>
+          POR TANTO., <br>
+          RUEGO A S.S., se sirva acceder a lo solicitado y no perseverar con la tramitación de la <br>
+          presente causa. <br>
+          <br>
+    <% elsif @user_document.document.name == 'Solicitud Cuidado Personal Provisiorio'%>
 
-  <br>
-<% elsif @user_document.document.name == 'Solicitud Medidas Cautelares' %>
-  <%= @user_document.document.name%>
-  <%= @user_document.rit%>
-<% end %>
+        <br>
+        <h4>SOLICITA CUIDADO PERSONAL PROVISORIO (COMPARECENCIA EN CAAF)</h4>. <br>
+        <h4>S. J. CENTRO DE MEDIDAS CAUTELARES</h4> <br>
+        <br>
+        <%= current_user.name %>, en causa RIT <%= @user_document.rit %>, domiciliada (o)<br>
+        en <%= current_user.address %>, comuna de <%= current_user.commune.comuna %>, teléfono <br>
+        <%= current_user.phone  %>, correo electrónico para notificar <%= current_user.email %>, a S.S.<br>
+        respetuosamente digo: <br>
+        Que vengo en solicitar a US., se sirva otorgarme el cuidado personal provisorio respecto <br>
+        del niño, niña o adolecente <%= @user_document.child %>, por los siguientes <br>
+        motivos: <br>
+        <%= @user_document.motive %>. <br>
+        POR TANTO., en mérito de lo expuesto,<br>
+        RUEGO A S.S., se sirva acceder a lo solicitado, otorgándome el cuidado personal <br>
+        provisorio.<br>
+      <br>
+      <br>
+    <% elsif @user_document.document.name == 'Solicitud Medidas Cautelares' %>
+
+      <h4>SOLICITA MEDIDAS CAUTELARES (COMPARECENCIA EN CAAF).</h4>
+      <h4>S. J. CENTRO DE MEDIDAS CAUTELARES</h4><br>
+      <br>
+      <h7>
+        <%= current_user.name %>, en causa RIT <%= @user_document.rit %>, domiciliada (o) <br>
+        en <%= current_user.address %>, comuna de <%= current_user.commune.comuna %>, teléfono <br>
+        <%= current_user.phone %>, correo electrónico para notificar <%= current_user.email %>, a S.S. <br>
+        respetuosamente digo:
+      </h7><br>
+      <br>
+      Que vengo en solicitar se decreten en mi favor las siguientes medidas cautelares: <br>
+      <br>
+      <p>1.- <%= @user_document.measure1 %> </p>.
+      <p>2.- <%= @user_document.measure2 %> .</p>
+      <p>3.- <%= @user_document.measure3 %> .</p>
+      Dicha solicitud se funda en los siguientes motivos: <br>
+      <p> <%= @user_document.motive %> .</p>
+      POR TANTO., en mérito de lo expuesto, <br>
+      RUEGO A S.S., se sirva acceder a lo solicitado, decretando las medidas cautelares <br>
+      solicitadas.<br>
+      <br>
+      <br>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+
+  </div>
+  <div class="col-md-6">
+    _________________________
+    <p>Firma parte solicitante y RUT</p>
+
+  </div>
+</div>

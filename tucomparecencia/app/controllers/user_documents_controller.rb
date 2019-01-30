@@ -7,7 +7,7 @@ class UserDocumentsController < ApplicationController
     @user_document = UserDocument.new(user_document_params)
 
     respond_to do |format|
-      # document = Document.find(params[:document_id])
+      @user_document = UserDocument.new(user_document_params)
       if @user_document.save
         format.html { redirect_to orders_path, notice: "El escrito: #{@user_document.document.name} fue creado." }
         # format.json { render :show, status: :created, location: @user_document }

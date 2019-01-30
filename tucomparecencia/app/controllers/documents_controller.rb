@@ -12,7 +12,7 @@ class DocumentsController < ApplicationController
   # GET /documents/1.json
   def show
     @user_document = UserDocument.new
-    @precautionary = Precautionary.pluck(:measure)
+    @precautionary = Precautionary.get_measure
     respond_to do |format|
       format.html
       format.pdf do
