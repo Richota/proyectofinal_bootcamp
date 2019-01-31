@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @regions = Region.pluck(:short_name, :id)
+
     @communes = Commune.pluck(:comuna, :id)
     build_resource({})
     respond_with self.resource
