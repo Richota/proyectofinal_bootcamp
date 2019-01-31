@@ -20,7 +20,9 @@ Rails.application.routes.draw do
       get 'execute'
     end
   end
+
   devise_for :users, controllers: {
+        :omniauth_callbacks => 'users/omniauth_callbacks',
         registrations: 'users/registrations'
       }
   root to: "landing#index"
