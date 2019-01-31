@@ -16,41 +16,50 @@
 
   <%= link_to 'Edit', edit_document_path(@document) %>
 <% end %>
-<%= link_to 'Back', documents_path %><br>
-
-<h1>Datos requeridos</h1>
-<p>Completar este pequeño formulario para la generación del escrito</p>
-<%= form_with(model: @user_document, local: true, html: {class: 'form'}) do |form| %>
-  <% if @document.name == 'Desistimiento'%>
-    <%= form.label :rit, "Causa RIT" %>
-    <%= form.text_field :rit %>
-    <br>
-  <% elsif @document.name == 'Solicitud Cuidado Personal Provisiorio'%>
-    <%= form.label :rit, "Causa RIT" %>
-    <%= form.text_field :rit, autofocus: true %>
-    <br>
-    <%= form.label :child %>
-    <%= form.text_field :child %>
-    <br>
-    <%= form.label :motive %>
-    <%= form.text_area :motive%>
-    <br>
-  <% elsif @document.name == 'Solicitud Medidas Cautelares' %>
-    <%= form.label :rit %>
-    <%= form.text_field :rit %>
-    <br>
-    1.- <%= form.select :measure1, @precautionary, include_blank: true %> .<br>
-    2.- <%= form.select :measure2, @precautionary, include_blank: true %> .<br>
-    3.- <%= form.select :measure3, @precautionary, include_blank: true %> .<br>
-    <br>
-    <%= form.label :motive %>
-    <%= form.text_area :motive%>
-    <br>
-  <% end %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= form.hidden_field :document_id, value: @document.id %>
-  <div class="actions"><br>
-    <%= form.submit 'Crear Escrito'%>
+<%= link_to 'Volver', documents_path %><br>
+<br>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card border-primary mb-4" style="max-width: 30rem;">
+      <div class="card-header"><h2>Datos requeridos</h2>
+        <p>Completar este pequeño formulario para la generación del escrito</p>
+      </div>
+      <div class="card-body">
+        <%= form_with(model: @user_document, local: true, html: {class: 'form'}) do |form| %>
+          <% if @document.name == 'Desistimiento'%>
+            <%= form.label :rit, "Causa RIT" %>
+            <%= form.text_field :rit %>
+            <br>
+          <% elsif @document.name == 'Solicitud Cuidado Personal Provisiorio'%>
+            <%= form.label :rit, "Causa RIT" %>
+            <%= form.text_field :rit, autofocus: true %>
+            <br>
+            <%= form.label :child %>
+            <%= form.text_field :child %>
+            <br>
+            <%= form.label :motive %>
+            <%= form.text_area :motive%>
+            <br>
+          <% elsif @document.name == 'Solicitud Medidas Cautelares' %>
+            <%= form.label :rit %>
+            <%= form.text_field :rit %>
+            <br>
+            1.- <%= form.select :measure1, @precautionary, include_blank: true %> .<br>
+            2.- <%= form.select :measure2, @precautionary, include_blank: true %> .<br>
+            3.- <%= form.select :measure3, @precautionary, include_blank: true %> .<br>
+            <br>
+            <%= form.label :motive %>
+            <%= form.text_area :motive%>
+            <br>
+          <% end %>
+          <%= form.hidden_field :user_id, value: current_user.id %>
+          <%= form.hidden_field :document_id, value: @document.id %>
+          <div class="actions"><br>
+            <%= form.submit 'Crear Escrito'%>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
   </div>
-<% end %>
+</div>

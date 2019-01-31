@@ -2,43 +2,48 @@
 
 <header id="header">
   <div class="container">
-
-    <div id="logo" class="pull-left">
-      <a href="#hero"><img src="<%= asset_path 'logo.png' %>" alt="" title=""></img></a>
-      <!-- Uncomment below if you prefer to use a text logo -->
-      <!-- <h2>Tu Comparecencia</h2> -->
-    </div>
-
-    <nav id="nav-menu-container">
-      <ul class="nav-menu">
-        <li class="menu-active"><%= link_to 'Home', root_path, class: "navbar-brand" %></li>
-        <% if user_signed_in? %>
-          <li><h4>Bienvenido <%= current_user.name %> </h4> </li>
-        <% end %>
-        <% if user_signed_in? %>
-          <li><%= link_to "Documentos", documents_path %></li>
-        <% end %>
-        <li><a href="#services">Servicio</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#contact">Contáctanos</a></li>
-        <li class="menu-has-children"><a href="">Acceso</a>
-          <ul>
-            <% if !user_signed_in? %>
-            <li class="nav-item mx-0 mx-lg-1">
-              <%= link_to 'Ingreso', new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
-            </li>
-            <li class="nav-item mx-0 mx-lg-1">
-              <%= link_to 'Registro', new_user_registration_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
-            </li>
-            <% else %>
-            <li class="nav-item mx-0 mx-lg-1">
-              <%= link_to 'Salir', destroy_user_session_path, method: 'DELETE', class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
-            </li>
-            <% end %>
+    <div class="row">
+      <div class="col-md-2">
+        <div id="logo" class="pull-left">
+          <a href="#hero"><img src="<%= asset_path 'logo.png' %>" alt="" title=""></img></a>
+          <!-- Uncomment below if you prefer to use a text logo -->
+          <!-- <h2>Tu Comparecencia</h2> -->
+        </div>
+      </div>
+      <div class="col-md-10">
+        <nav id="nav-menu-container">
+          <ul class="nav-menu">
+          <li class="menu-active"><%= link_to 'Home', root_path, class: "navbar-brand" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Documentos", documents_path %></li>
+          <% end %>
+          <li><a href="<%= root_path %>#services">Servicio</a></li>
+          <li><a href="<%= root_path %>#team">Team</a></li>
+          <li><a href="<%= root_path %>#contact">Contáctanos</a></li>
+          <li><a href="<%= landing_faq_path %>">FAQ</a></li>
+          <% if user_signed_in? %>
+          <li class="float-right"><a href="#">Perfil de <%= current_user.name%></a></li>
+          <% end %>
+          <li class="menu-has-children"><a href="">Acceso</a>
+            <ul>
+              <% if !user_signed_in? %>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Ingreso', new_user_session_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
+              </li>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Registro', new_user_registration_path, class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
+              </li>
+              <% else %>
+              <li class="nav-item mx-0 mx-lg-1">
+                <%= link_to 'Salir', destroy_user_session_path, method: 'DELETE', class: 'nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger'%>
+              </li>
+              <% end %>
+            </ul>
+          </li>
           </ul>
-        </li>
-      </ul>
-    </nav><!-- #nav-menu-container -->
+        </nav><!-- #nav-menu-container -->
+      </div>
+    </div>
   </div>
 </header><!-- #header -->
 <!-- #end navigation -->

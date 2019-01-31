@@ -14,6 +14,7 @@ class Order < ApplicationRecord
   end
 
   def self.group_document
+    
     group(:document_id).count
   end
 end
