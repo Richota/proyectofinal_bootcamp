@@ -13,6 +13,7 @@ gem 'chartkick', '~> 2.2.0'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'groupdate'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 gem 'paypal-sdk-rest'
 gem 'rails-erd', require: false, group: :development
 gem 'wicked_pdf'
