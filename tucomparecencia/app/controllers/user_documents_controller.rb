@@ -23,9 +23,9 @@ class UserDocumentsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "file_name",   # Excluding ".pdf" extension.
+        render pdf: "escrito",   # Excluding ".pdf" extension.
         template: "user_documents/index.html.erb",
-        layout: 'pdf.html'
+        layout: 'pdf.html.erb'
       end
     end
   end

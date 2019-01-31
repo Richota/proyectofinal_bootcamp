@@ -18,7 +18,7 @@ gem 'paypal-sdk-rest'
 gem 'rails-erd', require: false, group: :development
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem 'wkhtmltopdf-binary-edge'
+# gem 'wkhtmltopdf-binary-edge'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
