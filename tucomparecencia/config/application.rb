@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module Tucomparecencia
   class Application < Rails::Application
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
+    config.assets.paths << "#{Rails.root}/app/assets/stylesheets/bootstrap/"
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 

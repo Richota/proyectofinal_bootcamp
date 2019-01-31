@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'landing/index'
+  get 'landing/faq'
   resources :documents do
     resources :orders, only: :create
   end
-  resources :user_documents, only: [:create, :show, :new]
+  resources :user_documents, only: [:index, :create, :new]
 
   resources :orders, only: :index do
     collection do
       get 'clean'
     end
   end
-
 
   get 'users/index'
   resources :billings, only: [] do
@@ -19,7 +21,9 @@ Rails.application.routes.draw do
       get 'execute'
     end
   end
+
   devise_for :users, controllers: {
+        omniauth_callbacks: 'users/omniauth_callbacks',
         registrations: 'users/registrations'
       }
   root to: "landing#index"

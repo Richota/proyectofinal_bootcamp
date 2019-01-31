@@ -25,6 +25,7 @@
 //= require waypoints/src/waypoint
 //= require waypoints/lib/jquery.waypoints
 //= require wow
+//= require popper.js/dist/umd/popper
 //= require contactform
 //= require activestorage
 //= require turbolinks

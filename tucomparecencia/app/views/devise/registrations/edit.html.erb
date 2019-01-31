@@ -1,10 +1,10 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form' }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
+  <div class="field"><br/>
+    <%= f.label :email, "Email" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -12,8 +12,8 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <div class="field"><br/>
+    <%= f.label :password, "Password" %> <i>(dejar en blanco si no se desea cambiar)</i>
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
@@ -21,23 +21,48 @@
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div class="field"><br />
+    <%= f.label :password_confirmation, "Confirmar Password" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password, "Password actual" %> <i>(Para validar los cambios debes ingresar el password actual)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field"><br />
+      <%= f.label :name, "Nombre y Apellido" %>
+      <%= f.text_field :name, autocomplete: "name" %>
+  </div>
+
+  <div class="field"><br />
+      <%= f.label :phone, "Teléfono" %>
+      <%= f.text_field :phone, autocomplete: "phone" %>
+  </div>
+
+  <div class="field"><br/>
+      <%= f.label :address, "Dirección" %>
+      <%= f.text_field :address, autocomplete: "address" %>
+  </div>
+
+  <div class="field"><br />
+      <%= f.label :region_id, "Región" %>
+      <%= f.select :region_id, Region.pluck(:short_name, :id), include_blank: true %>
+  </div>
+
+  <div class="field"><br />
+      <%= f.label :commune_id, "Comuna"%>
+      <%= f.select :commune_id, Commune.pluck(:comuna, :id), include_blank: true %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Actualizar datos" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Eliminar mi cuenta</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>No estás contento? <%= button_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "Estás seguro de querer eliminar la cuenta?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Volver", :back %>

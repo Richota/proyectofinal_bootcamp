@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_25_042730) do
+ActiveRecord::Schema.define(version: 2019_01_31_174433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
 
   create_table "billings", force: :cascade do |t|
     t.string "code"
@@ -77,13 +103,11 @@ ActiveRecord::Schema.define(version: 2019_01_25_042730) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "precautionary_id"
     t.text "measure1"
     t.text "measure2"
     t.text "measure3"
     t.bigint "document_id"
     t.index ["document_id"], name: "index_user_documents_on_document_id"
-    t.index ["precautionary_id"], name: "index_user_documents_on_precautionary_id"
     t.index ["user_id"], name: "index_user_documents_on_user_id"
   end
 
@@ -106,6 +130,8 @@ ActiveRecord::Schema.define(version: 2019_01_25_042730) do
     t.text "address"
     t.bigint "commune_id"
     t.bigint "region_id"
+    t.string "provider"
+    t.string "uid"
     t.index ["commune_id"], name: "index_users_on_commune_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["region_id"], name: "index_users_on_region_id"
@@ -118,7 +144,6 @@ ActiveRecord::Schema.define(version: 2019_01_25_042730) do
   add_foreign_key "orders", "documents"
   add_foreign_key "orders", "users"
   add_foreign_key "user_documents", "documents"
-  add_foreign_key "user_documents", "precautionaries"
   add_foreign_key "user_documents", "users"
   add_foreign_key "users", "communes"
   add_foreign_key "users", "regions"

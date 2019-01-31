@@ -1,16 +1,15 @@
 class UserDocumentsController < ApplicationController
   def new
     @user_document = UserDocument.new
-    @precautionary = Precautionary.pluck(:measure)
-    @document = Order.last.document
   end
 
   def create
     @user_document = UserDocument.new(user_document_params)
 
     respond_to do |format|
+      @user_document = UserDocument.new(user_document_params)
       if @user_document.save
-        format.html { redirect_to documents_path, notice: "El escrito #{@user_document.document.name}fue creado." }
+        format.html { redirect_to orders_path, notice: "El escrito: #{@user_document.document.name} fue creado." }
         # format.json { render :show, status: :created, location: @user_document }
       else
         format.html { render :new }
@@ -19,8 +18,16 @@ class UserDocumentsController < ApplicationController
     end
   end
 
-  def show
-
+  def index
+    @user_document = UserDocument.last
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "escrito",   # Excluding ".pdf" extension.
+        template: "user_documents/index.html.erb",
+        layout: 'pdf.html.erb'
+      end
+    end
   end
 
   private

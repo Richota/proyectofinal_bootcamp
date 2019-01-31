@@ -7,12 +7,10 @@ class OrdersController < ApplicationController
     o = Order.new(user_id: current_user.id, document_id: d.id, payed: false, price: d.price)
     o.quantity += 1
     if o.save
-      redirect_to orders_path, notice: "El producto ha sido agregado al carro."
+      redirect_to document_path(d), notice: "El producto ha sido agregado al carro."
     else
       redirect_to documents_path, alert: "El producto NO ha sido agregado al carro"
     end
-
-
   end
 
   def clean
