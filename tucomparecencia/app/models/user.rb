@@ -10,8 +10,8 @@ class User < ApplicationRecord
   validates :name, presence: false, on: :update, allow_blank: true
   validates :phone, presence: false
   validates :address, presence: false
-  validates :commune_id, presence: false
-  validates :region_id, presence: false, on: :edit, allow_blank: true
+  validates :commune_id, presence: false, on: :create
+  validates :region_id, presence: false, on: :create
 
   belongs_to :commune
   belongs_to :region

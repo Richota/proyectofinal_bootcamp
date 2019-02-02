@@ -58,9 +58,7 @@
           <div class="field"><br />
             <h4 class="card-title">
               <%= f.label :region_id, "Región" %>
-              <div id="region">
                 <%= f.select :region_id, @regions, include_blank: true %>
-              </div>
             </h4>
           </div>
 
@@ -89,21 +87,8 @@
 </div>
 
 <!-- <script>
-  var new_region = $("[name='user[region_id]']").val();
-  $.ajax({
-    url: 'new_user_registration_path %>',
-    type: 'POST',
-    dataType: 'script',
-    data: {region: {region: new_region}}
-  })
-  .done(function() {
-    console.log("success");
-  })
-  .fail(function() {
-    console.log("error");
-  })
-  .always(function() {
-    console.log("complete");
-  });
+  $("#regions").select(function(){
+    $("#communes").append("");
 
+  });
 </script> -->

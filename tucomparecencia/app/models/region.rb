@@ -1,4 +1,5 @@
 class Region < ApplicationRecord
-  has_many :communes, dependent: :destroy
+  validates_uniqueness_of :short_name
+  has_many :communes
   has_many :users
 end

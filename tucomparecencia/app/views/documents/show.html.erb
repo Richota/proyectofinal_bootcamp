@@ -34,21 +34,23 @@
             <%= form.label :rit, "Causa RIT" %>
             <%= form.text_field :rit, autofocus: true %>
             <br>
-            <%= form.label :child %>
+            <%= form.label :child, "Nombe del menor" %>
             <%= form.text_field :child %>
             <br>
-            <%= form.label :motive %>
+            <%= form.label :motive, "Motivo de solicitud para el cuidado del menor"%>
             <%= form.text_area :motive%>
             <br>
-          <% elsif @document.name == 'Solicitud Medidas Cautelares' %>
-            <%= form.label :rit %>
-            <%= form.text_field :rit %>
+          <% elsif @document.name == 'Solicitud de Medidas Cautelares' %>
+            <%= form.label :rit, "Causa RIT"  %>
+            <%= form.text_field :rit%>
             <br>
+            <%= form.label :measure1, "Puedes seleccionar 3 medidas cautelares" %>
             1.- <%= form.select :measure1, @precautionary, include_blank: true %> .<br>
             2.- <%= form.select :measure2, @precautionary, include_blank: true %> .<br>
             3.- <%= form.select :measure3, @precautionary, include_blank: true %> .<br>
+            <p>Estas medidas son respecto a la ley 19968</p>
             <br>
-            <%= form.label :motive %>
+            <%= form.label :motive, "Motivo por el que se solicitan estas medidas" %>
             <%= form.text_area :motive%>
             <br>
           <% end %>

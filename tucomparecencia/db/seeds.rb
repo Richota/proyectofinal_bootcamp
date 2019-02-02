@@ -8,7 +8,12 @@
 Commune.destroy_all
 Region.destroy_all
 Precautionary.destroy_all
+Document.destroy_all
 #
+Document.create(name: 'Desistimiento', description: 'Aquel que tiene por objeto la voluntad de no proseguir con el procedimiento', price: 10)
+Document.create(name: 'Solicitud Cuidado Personal Provisiorio', description: 'Aque que tiene por objeto solicitar al tribunal que se le confiera por un tiempo determinado el cuidado personal de un menor por los hechos que se exponen en la solicitud', price: 11)
+Document.create(name:'Solicitud de Medidas Cautelares', description: 'Aquel que tiene por objeto solicitar al tribunal la aplicación de alguna medida que asegure el el resultado del juicio, o mantener una situación de hecho con miras a evitar un daño futuro', price: 12)
+# #
 xv   = Region.create(short_name: 'XV Región', nombre: 'Arica y Parinacota', ordinal: 'XV')
 i    = Region.create(short_name: 'I Región', nombre: 'Tarapacá', ordinal: 'I')
 ii   = Region.create(short_name: 'II Región', nombre: 'Antofagasta', ordinal: 'II')
@@ -413,8 +418,8 @@ requiera de los servicios que éstos ofrecen y ello sea
 indispensable frente a una amenaza a su vida o salud')
 Precautionary.create(measure: 'La prohibición de salir del país para el niño,
 niña o adolescente sujeto de la petición de protección.')
-
-# Artículo 92.- Medidas cautelares en protección de la víctima.
+#
+# # Artículo 92.- Medidas cautelares en protección de la víctima.
 Precautionary.create(measure: '1. Prohibir al ofensor acercarse a la víctima y
 prohibir o restringir la presencia de aquél en el hogar
 común y en el domicilio, lugar de estudios o de trabajo
@@ -458,5 +463,4 @@ denunciante.')
 Precautionary.create(measure: 'Establecer medidas de protección para adultos
 mayores o personas afectadas por alguna incapacidad o
 discapacidad.')
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-AdminUser.create!(email: 'rsuarez.adv@gmail.com', password: 'adventia', password_confirmation: 'adventia')
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

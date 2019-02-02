@@ -12,14 +12,10 @@
  *
  *= require style
  *= require animate
- *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap
  *= require bootstrap/scss/bootstrap.scss
  *= require bootstrap/dist/css/bootstrap-grid
  *= require bootstrap/dist/css/bootstrap-reboot
- *= require superfish/dist/css/superfish
- *= require superfish/dist/css/megafish
- *= require superfish/dist/css/superfish-navbar
- *= require superfish/dist/css/superfish-vertical
  *= require_tree .
  *= require_self
  */

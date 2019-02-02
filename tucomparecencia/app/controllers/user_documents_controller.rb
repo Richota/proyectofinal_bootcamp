@@ -25,7 +25,9 @@ class UserDocumentsController < ApplicationController
       format.pdf do
         render pdf: "escrito",   # Excluding ".pdf" extension.
         template: "user_documents/index.html.erb",
-        layout: 'pdf.html.erb'
+        layout: 'pdf.html.erb',
+        page_size: 'Letter',
+        show_as_html: params.key?('debug')
       end
     end
   end

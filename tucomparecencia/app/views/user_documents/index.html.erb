@@ -41,7 +41,7 @@
         provisorio.<br>
       <br>
       <br>
-    <% elsif @user_document.document.name == 'Solicitud Medidas Cautelares' %>
+    <% elsif @user_document.document.name == 'Solicitud de Medidas Cautelares' %>
 
       <h4>SOLICITA MEDIDAS CAUTELARES (COMPARECENCIA EN CAAF).</h4>
       <h4>S. J. CENTRO DE MEDIDAS CAUTELARES</h4><br>
@@ -78,4 +78,4 @@
 
   </div>
 </div>
-<%= link_to 'Create PDF document', user_documents_path( :format => :pdf , :target => "_blank") %>
+<%= link_to 'Create PDF document', user_documents_path( :format => :pdf), :target => "_blank" %>
