@@ -4,4 +4,8 @@ class Document < ApplicationRecord
   has_many :orders
   has_many :users, through: :orders
 
+  def to_s
+    name
+  end
+
 end
