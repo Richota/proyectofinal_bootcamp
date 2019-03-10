@@ -16,6 +16,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'paypal-sdk-rest'
 gem 'rails-erd', require: false, group: :development
+gem 'toastr-rails'
 gem 'webpacker', '~> 3.5'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'

@@ -18,15 +18,36 @@
   </head>
   <body>
     <%= render 'layouts/navbar' %>
-    <% if notice.present? %>
-      <div class="alert alert-dismissible alert-success" role="alert">
-        <p class="notice"><%= notice %></p>
-      </div>
-    <% elsif alert.present? %>
-      <div class="alert alert-dismissible alert-info" role="alert">
-        <p class="alert"><%= alert %></p>
-      </div>
-    <% end %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
+
+
+    <script>
+      $(document).ready(function() {
+        toastr.options = {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-top-right",
+          "preventDuplicates": true,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+
+        <% if notice %>
+        toastr.success('<%= notice %>')
+        <% elsif alert %>
+        toastr.warning('<%= alert %>')
+        <% end %>
+      })
+    </script>
   </body>
 </html>

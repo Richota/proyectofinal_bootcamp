@@ -19,7 +19,7 @@
           <% end %>
           <li><a href="<%= root_path %>#services">Servicio</a></li>
           <li><a href="<%= root_path %>#team">Team</a></li>
-          <li><a href="<%= root_path %>#contact">Contáctanos</a></li>
+          <li><a href="<%= contacts_path %>">Contáctanos</a></li>
           <li><a href="<%= landing_faq_path %>">FAQ</a></li>
           <% if user_signed_in? %>
           <li class="float-right"><a href="#">Perfil de <%= current_user.name%></a></li>

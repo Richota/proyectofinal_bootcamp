@@ -7,6 +7,7 @@
     <div class="card border-primary mb-4" style="max-width: 30rem;">
       <div class="card-header"><h2>Formulario de Registro</h2></div>
       <div class="card-body">
+        <!-- Inicio de formulario registro -->
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form'}) do |f| %>
           <%= devise_error_messages! %>
 
@@ -58,22 +59,25 @@
           <div class="field"><br />
             <h4 class="card-title">
               <%= f.label :region_id, "Región" %>
-                <%= f.select :region_id, @regions, include_blank: true %>
+              <div id="select-region">
+                  <%= f.select :region_id, Region.pluck(:short_name, :id),include_blank: true %>
+              </div>
             </h4>
           </div>
 
           <div class="field"><br />
             <h4 class="card-title">
               <%= f.label :commune_id, "Comuna"%>
-              <%= f.select :commune_id, @communes, include_blank: true %>
+              <div id="comuna"> </div>
             </h4>
           </div>
+          <br>
 
           <div class="actions">
             <%= f.submit "Registrarse", class:'btn btn-primary' %>
           </div>
-        <% end %>
 
+        <% end %>
       </div>
     </div>
   </div>
@@ -86,9 +90,23 @@
   </div>
 </div>
 
-<!-- <script>
-  $("#regions").select(function(){
-    $("#communes").append("");
-
+<script>
+  $('#select-region').change(function() {
+    var region = $("[name='user[region_id]']").val()
+    $.ajax({
+      url: '<%= users_address_path %>',
+      type: 'POST',
+      dataType: 'script',
+      data: {region_id: region}
+    })
+    .done(function() {
+      console.log("success");
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
   });
-</script> -->
+</script>

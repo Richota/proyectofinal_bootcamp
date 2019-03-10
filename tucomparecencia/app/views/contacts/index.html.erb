@@ -1,0 +1,69 @@
+<section id="contact">
+  <br>
+  <div class="container wow fadeInUp">
+    <div class="section-header">
+      <h3 class="section-title">Contacto</h3>
+      <p class="section-description">Nos encontramos en el Centro de Justicia</p>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3328.0716689452715!2d-70.65899854953676!3d-33.47348480598586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662c53c9f8374e7%3A0xb373878bd678c8cd!2sCentro+De+Justicia!5e0!3m2!1ses!2scl!4v1549002029539" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+  </div>
+  <br>
+  <br>
+  <div class="container wow fadeInUp mt-5">
+    <div class="row justify-content-center">
+
+
+        <div class="col-lg-5 col-md-8 col-md-offset-4">
+          <h2>Formulario de contacto</h2>
+          <div class="form">
+            <%= form_with(model: @contact,remote: true , class:"contactForm", id:"formContact")do |form| %>
+
+              <%= form.label :name, "Nombre" %>
+              <%= form.text_field :name, autofocus: true, class:"form-control" %>
+              <br>
+              <%= form.label :email, "email" %>
+              <%= form.email_field :email, class:"form-control" %>
+              <br>
+              <%= form.label :subject, "Asunto"%>
+              <%= form.text_field :subject, class:"form-control"%>
+              <br>
+              <%= form.label :message, "Mensaje"%>
+              <%= form.text_area :message, class:"form-control"%>
+              <div class="actions"><br>
+                <%= form.submit 'Enviar', class:"btn btn-info", id:"btn-contact"%>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+  <script>
+    $("#btn-contact").click(function(event){
+      event.preventDefault();
+      var name = $("[name='contact[name]']").val()
+      var email = $("[name='contact[email]']").val()
+      var subject = $("[name='contact[subject]']").val()
+      var message = $("[name='contact[message]']").val()
+      $.ajax({
+        url: '<%= contacts_path %>',
+        type: 'POST',
+        dataType: 'script',
+        data: {contact: {name: name, email: email, subject: subject, message: message}}
+      })
+      .done(function() {
+        console.log("success");
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+
+    })
+  </script>

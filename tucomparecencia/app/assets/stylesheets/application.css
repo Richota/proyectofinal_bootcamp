@@ -13,7 +13,7 @@
  *= require style
  *= require animate
  *= require bootstrap
-
+ *= require toastr
  *= require bootstrap/dist/css/bootstrap-grid
  *= require bootstrap/dist/css/bootstrap-reboot
  *= require_tree .

@@ -17,6 +17,7 @@
 //= require bootstrap/dist/js/bootstrap
 //= require bootstrap/dist/js/bootstrap.bundle
 //= require jquery-migrate
+//= require toastr
 //= require counterup
 //= require easing
 //= require hoverIntent

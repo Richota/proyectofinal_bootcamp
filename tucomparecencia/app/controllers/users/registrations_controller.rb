@@ -5,19 +5,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    @regions = Region.pluck(:short_name, :id)
-
-    @communes = Commune.pluck(:comuna, :id)
-
-    build_resource({})
-    respond_with self.resource
-
-  end
+  # def new
+  #   @regions = Region.pluck(:short_name, :id)
+  #   # @communes = Commune.pluck(:comuna, :id)
+  #   build_resource({})
+  #   respond_with self.resource
+  # end
 
   # POST /resource
   # def create
-  #
+  #   super
   # end
 
   # GET /resource/edit
@@ -51,12 +48,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :lastname, :phone, :address, :commune_id, :region_id])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :lastname, :phone, :address, :region_id, :commune_id])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :lastname, :phone, :address, :commune_id, :region_id])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :lastname, :phone, :address, :region_id, :commune_id])
   end
 
   # The path used after sign up.

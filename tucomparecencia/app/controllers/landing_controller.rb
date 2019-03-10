@@ -1,5 +1,12 @@
 class LandingController < ApplicationController
 
   def index
+    @contact = Contact.new
+
   end
+
+  def faq
+
+  end
+
 end

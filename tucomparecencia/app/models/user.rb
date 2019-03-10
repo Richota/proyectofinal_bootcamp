@@ -10,11 +10,11 @@ class User < ApplicationRecord
   validates :name, presence: false, on: :update, allow_blank: true
   validates :phone, presence: false
   validates :address, presence: false
-  validates :commune_id, presence: false, on: :create
-  validates :region_id, presence: false, on: :create
+  # validates :commune_id, presence: false, on: :create
+  # validates :region_id, presence: false, on: :create
 
   belongs_to :commune
-  belongs_to :region
+  belongs_to :region, :optional => true
   has_many :user_documents
   has_many :billings
   has_many :orders
